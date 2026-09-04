@@ -24,15 +24,17 @@ mkdir -p $BASEDIR/dist
 
 for CONFIG_NAME in tfx ml-pipelines-sdk
 do
-  ln -sf $BASEDIR/setup.py $BASEDIR/package_build/$CONFIG_NAME/
-  ln -sf $BASEDIR/dist $BASEDIR/package_build/$CONFIG_NAME/
-  ln -sf $BASEDIR/tfx $BASEDIR/package_build/$CONFIG_NAME/
-  ln -sf $BASEDIR/MANIFEST.in $BASEDIR/package_build/$CONFIG_NAME/
-  ln -sf $BASEDIR/README*.md $BASEDIR/package_build/$CONFIG_NAME/
-  ln -sf $BASEDIR/LICENSE $BASEDIR/package_build/$CONFIG_NAME/
+  PKGDIR=$BASEDIR/package_build/$CONFIG_NAME
 
-  rm -rf $BASEDIR/package_build/$CONFIG_NAME/build
-  mkdir $BASEDIR/package_build/$CONFIG_NAME/build
-  ln -sf $BASEDIR/build/BUILD $BASEDIR/package_build/$CONFIG_NAME/build/
-  ln -sf $BASEDIR/build/gen_proto.sh $BASEDIR/package_build/$CONFIG_NAME/build/
+  ln -sf $BASEDIR/setup.py $PKGDIR/
+  ln -sf $BASEDIR/dist $PKGDIR/
+  ln -sf $BASEDIR/tfx $PKGDIR/
+  ln -sf $BASEDIR/MANIFEST.in $PKGDIR/
+  ln -sf $BASEDIR/README*.md $PKGDIR/
+  ln -sf $BASEDIR/LICENSE $PKGDIR/
+
+  rm -rf $PKGDIR/build
+  mkdir $PKGDIR/build
+  ln -sf $BASEDIR/build/BUILD $PKGDIR/build/
+  ln -sf $BASEDIR/build/gen_proto.sh $PKGDIR/build/
 done
